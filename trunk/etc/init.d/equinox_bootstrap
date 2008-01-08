@@ -22,7 +22,7 @@ EQUINOX_CONF=/etc/equinox_bootstrap
 
 usage()
 {
-    echo "Usage: $0 {start|stop|status}"
+    echo "Usage: $0 {start|stop|status|restart}"
     exit 1
 }
 [ $# -gt 0 ] || usage
@@ -44,23 +44,29 @@ else
 fi
 
 
-CLASSPATH=$EQUINOX_HOME/bin/equinox.jar:$EQUINOX_HOME/bin/bootstrap.jar
+CLASSPATH=$EQUINOX_HOME/bin/$EQUINOX_JAR:$EQUINOX_HOME/bin/equinoxServiceBootstrap.jar
 
-JAVA_OPTS="$JAVA_OPTS -Dequinox.bootstrap.admin.port=$ADMIN_PORT"
+JAVA_OPTS="$JAVA_OPTS -Dequinox.bootstrap.admin.port=$ADMIN_PORT \
+	-Dosgi.instance.area=$INSTANCE_AREA \
+	-Dosgi.install.area=$INSTALL_AREA \
+	-Dosgi.configuration.area=$CONFIG_AREA"
 
 RUN_CMD="$JAVA_HOME/bin/java $JAVA_OPTS \
-    -classpath $CLASSPATH com.willcode4beer.service.equinox.Bootstrap $ACTION $*"
+    -classpath $CLASSPATH com.willcode4beer.service.equinox.Bootstrap "
 
 case "$ACTION" in
   start)
-	echo "Starting"
-	$_RUNPROC "$RUN_CMD" &
+	$_RUNPROC "$RUN_CMD start $*" &
 	;;
   stop)
-	$_RUNPROC "$RUN_CMD"
+	$_RUNPROC "$RUN_CMD stop $*"
 	;;
   status)
-	$_RUNPROC "$RUN_CMD"
+	$_RUNPROC "$RUN_CMD status $*"
+	;;
+  restart)
+	$_RUNPROC "$RUN_CMD stop $*" 
+	$_RUNPROC "$RUN_CMD start $*" &
 	;;
   *)
 	usage
