@@ -5,9 +5,40 @@
 	<groupId>com.willcode4beer</groupId>
 	<artifactId>equinox-service</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0-SNAPSHOT</version>
 	<name>equinox-service</name>
-	<url>http://maven.apache.org</url>
+	<version>1.0</version>
+	<organization>
+		<name>willCode4Beer</name>
+		<url>http://willcode4beer.com</url>
+	</organization>
+	<description>
+	A bootstrap runner and manager for the Equinox OSGi runtime.
+	</description>
+	<url>http://willcode4beer.com/ware.jsp?set=equinoxBootstrap</url>
+	<inceptionYear>2008</inceptionYear>
+	<issueManagement>
+		<system>Google Code</system>
+		<url>http://code.google.com/p/equinox-headless-service/issues/list</url>
+	</issueManagement>
+	<developers>
+		<developer>
+			<name>Paul E. Davis</name>
+			<roles>
+				<role>Developer</role>
+			</roles>
+		</developer>
+	</developers>
+	<scm>
+		<connection>
+		scm:svn:http://equinox-headless-service.googlecode.com/svn/trunk/
+		</connection>
+		<developerConnection>
+		scm:svn:https://equinox-headless-service.googlecode.com/svn/trunk/
+		</developerConnection>
+		<url>
+		http://code.google.com/p/equinox-headless-service/source
+		</url>
+	</scm>
 	<build>
 		<finalName>equinoxServiceBootstrap</finalName>
 		<plugins>
