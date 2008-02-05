@@ -2,7 +2,7 @@
 
 = Introduction =
 
-Though insecure, this project is ready to use
+Though simple, this project is ready to use
 
 
 == Install ==
