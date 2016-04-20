@@ -1,0 +1,1 @@
+A set of classes to Bootstrap and run Equinox headless as well as init scripts to kick it off at the appropriate run level.
